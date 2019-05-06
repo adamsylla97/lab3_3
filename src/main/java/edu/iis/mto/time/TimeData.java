@@ -7,14 +7,18 @@ import java.time.Instant;
 
 public class TimeData {
 
-    //public int time = 0;
+    DateTime time;
 
-    public static DateTime getTime(int time){
-        return DateTime.parse(Instant.now().plusSeconds(time).toString());
+    public TimeData() {
+        this.time = new DateTime();
     }
 
-    public static DateTime getTime(){
-        return DateTime.parse(Instant.now().plusSeconds(0).toString());
+    public void setTime(int addSeconds){
+        this.time = DateTime.parse(Instant.now().plusSeconds(addSeconds).toString());
     }
 
+    public DateTime getTime() {
+        return time;
+    }
 }
+

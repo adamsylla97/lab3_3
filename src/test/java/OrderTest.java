@@ -10,19 +10,19 @@ import java.util.Date;
 
 public class OrderTest {
 
-    @Test (expected = OrderExpiredException.class)
-    public void confirmShouldThrowOrderExpiredException(){
-        int time = -90001;
-        Order order = new Order(time);
+    @Test
+    public void confirmShouldntThrowOrderExpiredException(){
+        Order order = new Order();
         order.submit();
         order.confirm();
     }
 
-    @Test
-    public void confirmShouldntThrowOrderExpiredException(){
-        int time = 0;
-        Order order = new Order(time);
+    @Test (expected = OrderExpiredException.class)
+    public void confirmShouldThrowOrderExpiredException(){
+        int time = 90001;
+        Order order = new Order();
         order.submit();
+        order.actualDate.setTime(time);
         order.confirm();
         Assert.assertEquals(Order.State.SUBMITTED, order.getOrderState());
     }
