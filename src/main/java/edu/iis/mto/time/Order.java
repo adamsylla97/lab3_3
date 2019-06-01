@@ -13,9 +13,9 @@ public class Order {
 	private DateTime subbmitionDate;
 	public TimeData actualDate;
 
-	public Order() {
+	public Order(TimeData timeData) {
 		orderState = State.CREATED;
-		actualDate = new TimeData();
+		actualDate = timeData;
 	}
 
 	public void addItem(OrderItem item) {

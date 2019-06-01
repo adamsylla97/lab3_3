@@ -10,10 +10,14 @@ public class TimeData {
     DateTime time;
 
     public TimeData() {
-        this.time = new DateTime();
+        this.time = DateTime.now();
     }
 
-    public void setTime(int addSeconds){
+    public TimeData(DateTime date){
+        this.time = date;
+    }
+
+    public void changeTimeBy(int addSeconds){
         this.time = DateTime.parse(Instant.now().plusSeconds(addSeconds).toString());
     }
 
